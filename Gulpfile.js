@@ -13,7 +13,7 @@ var fs = require('fs');
 var _ = require('underscore');
 
 var paths = {
-  files: ['src/**/*.js', 'build/**/*.js'],
+  files: ['src/**/*.js', 'src/**/*.css', 'src/**/*.coffee', 'src/**/*.scss'],
   main: ['src/index.js'],
   tests: ['test/**/*.js'],
   dest: 'bin'
@@ -41,9 +41,12 @@ function format(filePath) {
   return {name: name, content: content};
 }
 
+function copy(file, dest) {
+  fs.createReadStream(file).pipe(fs.createWriteStream(dest));
+}
+
 function copyAssets(asset) {
-  fs.createReadStream(asset)
-    .pipe(fs.createWriteStream(paths.dest + '/assets/' + path.basename(asset)));
+  copy(asset, paths.dest + '/assets/' + path.basename(asset));
 }
 
 gulp.task('sass', function () {
@@ -69,7 +72,12 @@ gulp.task('coffee', function() {
     .pipe(gulp.dest('build'));
 });
 
-gulp.task("build", ["assets", "jst", "coffee"], function () {
+gulp.task("copy-sources", function() {
+  return gulp.src(paths.files.slice(0, 2))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task("build", ["assets", "jst", "coffee", "copy-sources"], function () {
   return gulp.src('build/index.js', { read: false })
       .pipe(changed(paths.dest))
       .pipe(browserify())
