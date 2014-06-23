@@ -1,0 +1,25 @@
+{
+  "name": "todolist",
+  "version": "0.0.0",
+  "authors": [
+    "Bruno Torres <bruno.torres@me.com>"
+  ],
+  "description": "Sample ember todo list",
+  "main": "bin/index.js",
+  "license": "BSD",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~1.5.1",
+    "ember-data": "~0.0.14",
+    "handlebars": "~1.3.0",
+    "jquery": "~2.1.1",
+    "ember-localstorage-adapter": "~0.3.1"
+  }
+}
