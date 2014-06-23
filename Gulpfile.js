@@ -94,7 +94,7 @@ gulp.task("watch", ["build"], function() {
 });
 
 gulp.task("libs", function() {
-  return gulp.src('bower.js')
+  return gulp.src('bower.js');
 });
 
 gulp.task("default", ["build"]);
