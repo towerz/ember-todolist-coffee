@@ -5,6 +5,8 @@ var coffee = require('gulp-coffee');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var utils = require('gulp-util');
+var minifyCSS = require('gulp-minify-css');
+var minifyHTML = require('gulp-minify-html');
 
 var glob = require('glob').sync;
 var mkdirp = require('mkdirp').sync;
@@ -52,11 +54,18 @@ function copyAssets(asset) {
 gulp.task('sass', function () {
     return gulp.src('src/**/*.scss')
         .pipe(sass())
+        .pipe(minifyCSS())
         .pipe(gulp.dest("build"));
 });
 
-gulp.task("jst", ["sass"], function() {
-  var templates = glob('src/**/*.html').map(format);
+gulp.task("copy-html", function() {
+  return gulp.src('src/**/*.html')
+    .pipe(minifyHTML())
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task("jst", ["sass", "copy-html"], function() {
+  var templates = glob('build/**/*.html').map(format);
   var styles = glob('{src,build}/**/*.css').map(format);
   fs.writeFileSync(jstFile, codeTemplate({templates: templates, styles: styles}));
 });
