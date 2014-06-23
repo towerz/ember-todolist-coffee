@@ -1,25 +1,25 @@
-DS = require("ember-data")
-Todos = require("../app")
+DS = require 'ember-data'
+Todos = require '../app'
 
 Todos.Todo = DS.Model.extend(
-  title: DS.attr("string")
-  isCompleted: DS.attr("boolean")
+  title: DS.attr 'string'
+  isCompleted: DS.attr 'boolean'
 )
 
 Todos.Todo.FIXTURES = [
   {
     id: 1
-    title: "Learn Ember.js"
+    title: 'Learn Ember.js'
     isCompleted: true
   }
   {
     id: 2
-    title: "..."
+    title: '...'
     isCompleted: false
   }
   {
     id: 3
-    title: "Profit!"
+    title: 'Profit!'
     isCompleted: false
   }
 ]

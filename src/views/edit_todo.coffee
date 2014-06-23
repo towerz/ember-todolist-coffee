@@ -1,5 +1,5 @@
-Ember = require("ember")
-Todos = require("../app")
+Ember = require 'ember'
+Todos = require '../app'
 
 Todos.EditTodoView = Ember.TextField.extend(
   didInsertElement: ->
@@ -7,6 +7,6 @@ Todos.EditTodoView = Ember.TextField.extend(
     return
 )
 
-Ember.Handlebars.helper "edit-todo", Todos.EditTodoView
+Ember.Handlebars.helper 'edit-todo', Todos.EditTodoView
 
 module.exports = Todos.EditTodoView
