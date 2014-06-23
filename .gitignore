@@ -1,4 +1,5 @@
 .DS_Store
 bin/
+build/
 bower_components/
 node_modules/
