@@ -55,13 +55,15 @@
         "ember:Ember"
       ],
       "exports": "DS.LSAdapter"
-    }
+    },
+    "underscore": "_"
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.min.js",
-    "handlebars": "./bower_components/handlebars/handlebars.js",
+    "handlebars": "./bower_components/handlebars/handlebars.min.js",
     "ember": "./bower_components/ember/ember.min.js",
     "ember-data": "./bower_components/ember-data/ember-data.min.js",
-    "ember-localstorage-adapter": "./bower_components/ember-localstorage-adapter/localstorage_adapter.js"
+    "ember-localstorage-adapter": "./bower_components/ember-localstorage-adapter/localstorage_adapter.js",
+    "underscore": "./bower_components/underscore/underscore.js"
   }
 }
